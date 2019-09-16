@@ -1,0 +1,232 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="studentmaster.aspx.cs" Inherits="studentmaster" EnableEventValidation="false" %>
+
+<%--<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>--%>
+<!DOCTYPE html>
+   
+   <html xmlns="http://www.w3.org/1999/xhtml">
+   <head runat="server">
+       
+    <title>Student Master</title>
+   <link rel="Stylesheet" type="text/css" href="Css/style.css" />
+    <link rel="Stylesheet" type="text/css" href="Css/MasterForm.css" />
+
+    <script language="javascript" type="text/javascript" src="JavaScript/studentmaster.js"></script>
+    <script language="javascript" type="text/javascript" src="JavaScript/FGCalender.js"></script>
+    <script language="javascript" type="text/javascript" src="JavaScript/FGValidation.js"></script>
+    <script language="javascript" type="text/javascript" src="JavaScript/FGPermission.js"></script>
+    <script language="javascript" type="text/javascript" src="JavaScript/jquery-1.5.js"></script>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+      <%--  <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"/>--%>
+       
+   <div id="divcity" style="position: absolute; top: 0px; left: 0px; border: none; display: none; z-index: 1;">
+        <table cellpadding="0" cellspacing="0">
+   <tr><td><asp:ListBox ID="lstcity" Width="170px" Height="100px" runat="server" CssClass="btextlist">
+           </asp:ListBox></td></tr></table></div>
+
+          <div id="divagency" style="position:absolute;top:0px;left:0px;border:none;display:none;z-index:1;"><table cellpadding="0" cellspacing="0"><tr><td><asp:ListBox ID="lstagency" Width="450px"  Height="100px" runat="server" CssClass="btextlist" ></asp:ListBox></td></tr></table></div> 
+        
+   <div id="divzone" style="position:absolute;top:0px;left:0px;border:none;display:none;z-index:1;">
+     <table cellpadding="0" cellspacing="0">
+      <tr><td><asp:ListBox ID="lstzone" Width="150px"  Height="100px" runat="server" CssClass="btextlist" ></asp:ListBox></td></tr>
+     </table></div> 
+
+   <div id="divregion" style="position:absolute;top:0px;left:0px;border:none;display:none;z-index:1;">
+    <table cellpadding="0" cellspacing="0">
+      <tr><td><asp:ListBox ID="istregion" Width="150px"  Height="100px" runat="server" CssClass="btextlist" >
+                   </asp:ListBox></td></tr>
+       </table></div> 
+   <div id="divtaluka" style="position:absolute;top:0px;left:0px;border:none;display:none;z-index:1;">
+       <table cellpadding="0" cellspacing="0">
+           <tr><td><asp:ListBox ID="lsttaluka" Width="150px"  Height="100px" runat="server" CssClass="btextlist" ></asp:ListBox></td></tr>
+       </table></div> 
+
+       
+        
+    <div style="text-align: center; background-color:aqua; border: groove; Width: 100.5%; margin: 0px;">Student  Master</div>
+   <div>
+       <table style="border: 1px black solID; background-color:antiquewhite; margin: 0px; Width: 100%; border-bottom-Width: initial; padding: 20px;">
+           <tr>
+
+               <td ><asp:Label ID="lblcentername" CssClass="label" runat="server">CenterName<span style="color:red"/>*</asp:Label></td>
+               <td colspan="1"><asp:DropDownList ID="ddlcentername" AutoComplete="off" runat="server" CssClass="dropdown"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);">
+                       <asp:ListItem Value="0" Text="- - - - -select- - - - -"></asp:ListItem>
+                       <asp:ListItem Value="1" Text="Noida"></asp:ListItem>
+                       <asp:ListItem Value="2" Text="Delhi"></asp:ListItem>
+                   </asp:DropDownList></td>
+               <td><asp:Label ID="lblbookingno"  CssClass="label" runat="server">BookingNo</asp:Label></td>
+               <td><asp:TextBox ID="txtbookingno" Width="170px" AutoComplete="off" CssClass="btext1" runat="server"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+               <td><asp:Label ID="lblbookingdate"  CssClass="label" runat="server">BookingDate</asp:Label></td>
+               <td><asp:TextBox ID="txtbookingdate" AutoComplete="off" Width="166px" CssClass="btext1" runat="server"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox>
+                    <img src='Images/cal1.png' id="Img4" onclick='popUpCalendar(this, form1.txtbookingdate, "dd/mm/yyyy")'height="12" width="12" style="margin-left: -13px; margin-top: 2px; position: absolute"  />
+                 <%--  <cc1:CalendarExtender ID="Calendar1" PopupButtonID="imgPopup" runat="server" TargetControlID="txtbookingdate" Format="dd/MM/yyyy"/>--%>
+               </td>
+               <td><asp:Label ID="lbldepartment"  CssClass="label" runat="server">Department<span style="color:red"/>[F2]</asp:Label></td>
+               <td><asp:TextBox ID="txtdepartment" AutoComplete="off" runat="server"  Width="162px" CssClass="btext1" onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+           </tr>
+           <tr>
+               <td><asp:Label ID="lblstudentname"  CssClass="label" runat="server">StudentName<span style="color:red"/>*</asp:Label></td>
+               <td colspan="3 "><asp:TextBox ID="txtstudentname" AutoComplete="off" CssClass="btext1" runat="server" Width="489px" onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+               <td><asp:Label ID="lblfather"  CssClass="label" runat="server">FatherName</asp:Label></td>
+               <td><asp:TextBox ID="txtfathername" AutoComplete="off" Width="166px" CssClass="btext1" runat="server"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+               <td><asp:Label ID="lblpaymentmode"  CssClass="label" runat="server">Paymentmode<span style="color:red"/>*</asp:Label></td>
+               <td><asp:DropDownList ID="ddlpaymentmode" AutoComplete="off" runat="server"  Width="162px" CssClass="dropdown"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);">
+                       <asp:ListItem Value="0" Text="- - - - -select- - - - -"></asp:ListItem>
+                       <asp:ListItem Value="1" Text="Cash"></asp:ListItem>
+                       <asp:ListItem Value="2" Text="Credit card"></asp:ListItem>
+                       <asp:ListItem Value="3" Text="Debit card"></asp:ListItem>
+                   </asp:DropDownList></td>
+           </tr>
+           <tr>
+               <td><asp:Label ID="lbldeliveryby"  CssClass="label" runat="server">DeliveryBY<span style="color:red"/>[F2]</asp:Label></td>
+               <td colspan="3"><asp:TextBox ID="txtdeliveryby" CssClass="btext1" AutoComplete="off" runat="server" Width="489px"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+                <td style="width: 114px;" ><asp:label id="lblagencyname" runat="server" CssClass="label">Agency Name<span style="color:red">[F2]*</span></asp:label></td>
+       <td colspan="3"><asp:textbox id="txtagencyname" Text="---------------Select Agency Name---------------"  runat="server" CssClass="btext1"  MaxLength="50" onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);" AutoComplete="off"  
+                Width="491px" style="color:gray;text-align:center;text-transform:capitalize;"></asp:textbox></td>
+           </tr>
+           <tr>
+               <td><asp:Label ID="lblsupplytype"  CssClass="label" runat="server">SupplyType</asp:Label></td>
+               <td><asp:DropDownList ID="ddlsupplytype" AutoComplete="off" Width="166px" runat="server" CssClass="dropdown"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);">
+                       <asp:ListItem Value="0" Text="- - - - -select - - - - -"></asp:ListItem>
+                       <asp:ListItem Value="1" Text=" Industry analyst "></asp:ListItem>
+                       <asp:ListItem Value="2" Text=" Project manager"></asp:ListItem>
+                       <asp:ListItem Value="3" Text=" Global logistics "></asp:ListItem>
+                   </asp:DropDownList></td>
+               <td><asp:Label ID="lblpublication"  CssClass="label" runat="server">Publication<span style="color:red"/>*</asp:Label></td>
+               <td><asp:DropDownList ID="ddlpublication" Width="173px"  AutoComplete="off" CssClass="dropdown" runat="server"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);">
+                       <asp:ListItem Value="0" Text="- - - - -select- - - - -"></asp:ListItem>
+                       <asp:ListItem Value="1" Text=" Newspaper "></asp:ListItem>
+                       <asp:ListItem Value="2" Text=" Television "></asp:ListItem>
+                       <asp:ListItem Value="3" Text=" Magazine "></asp:ListItem>
+                   </asp:DropDownList></td>
+               <td><asp:Label ID="lbledition"  CssClass="label" runat="server">Edition<span style="color:red"/>*</asp:Label></td>
+               <td><asp:DropDownList ID="ddledition" AutoComplete="off"  CssClass="dropdown" runat="server"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);">
+                       <asp:ListItem Value="0" Text="- - - - -select- - - - -"></asp:ListItem>
+                       <asp:ListItem Value="1" Text=" 2d-Edition "></asp:ListItem>
+                       <asp:ListItem Value="2" Text=" 4th-Edition "></asp:ListItem>
+                       <asp:ListItem Value="3" Text=" 5th-Edition "></asp:ListItem>
+                   </asp:DropDownList></td>
+               <td><asp:Label ID="lblnooftest"  CssClass="label" runat="server">NoofTest<span style="color:red"/>*</asp:Label></td>
+               <td><asp:TextBox ID="txtnooftest" AutoComplete="off"  Width="162px" CssClass="btext1" runat="server" onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+           </tr>
+           <tr>
+               <td><asp:Label ID="lblstartdate"  CssClass="label" runat="server">StartDate<span style="color:red"/>*</asp:Label></td>
+               <td><asp:TextBox ID="txtstartdate" AutoComplete="off" Width="166px" CssClass="btext1" runat="server"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox>
+                    <img src='Images/cal1.png' id="Img3" onclick='popUpCalendar(this, form1.txtstartdate, "dd/mm/yyyy")'height="12" width="12" style="margin-left: -13px; margin-top: 2px; position: absolute"  />
+                   <%--  <cc1:CalendarExtender ID="CalendarExtender1" PopupButtonID="imgPopup" runat="server" TargetControlID="txtstartdate" Format="dd/MM/yyyy"/>--%>
+               </td>
+               <td><asp:Label ID="lblenddate"  CssClass="label" runat="server">EndDate<span style="color:red"/>*</asp:Label></td>
+               <td><asp:TextBox ID="txtenddate" AutoComplete="off" Width="170px" runat="server"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox>
+                    <img src='Images/cal1.png' id="Img1" onclick='popUpCalendar(this, form1.txtenddate, "dd/mm/yyyy")'height="12" width="12" style="margin-left: -13px; margin-top: 2px; position: absolute"  />
+                    <%-- <cc1:CalendarExtender ID="CalendarExtender2" PopupButtonID="imgPopup" runat="server" TargetControlID="txtenddate" Format="dd/MM/yyyy"/>--%>
+               </td>
+               <td><asp:Label ID="lbldob"  CssClass="label" runat="server">DOB<span style="color:red"/>*</asp:Label></td>
+               <td><asp:TextBox ID="txtdob" AutoComplete="off" Width="166px" CssClass="btext1" runat="server"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox>
+                   <img src='Images/cal1.png' id="Img2" onclick='popUpCalendar(this, form1.txtdob, "dd/mm/yyyy")'height="12" width="12" style="margin-left: -13px; margin-top: 2px; position: absolute"  />
+                     <%--<cc1:CalendarExtender ID="CalendarExtender3" PopupButtonID="imgPopup" runat="server" TargetControlID="txtdob" Format="dd/MM/yyyy"/>--%>
+               </td> 
+               <td><asp:Label ID="lblstatus"  CssClass="label" runat="server">Status<span style="color:red"/>*</asp:Label></td>
+               <td><asp:DropDownList ID="ddlstatus" AutoComplete="off"  Width="162px" CssClass="dropdown" runat="server"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);">
+                       <asp:ListItem Value="0" Text="- - - -select- - - -"></asp:ListItem>
+                       <asp:ListItem Value="1" Text="   Gen   "></asp:ListItem>
+                       <asp:ListItem Value="2" Text="   OBC   "></asp:ListItem>
+                       <asp:ListItem Value="3" Text="   Other   "></asp:ListItem>
+                   </asp:DropDownList></td>
+           </tr>
+           <tr>
+               <td><asp:Label ID="lblremarks"  CssClass="label" runat="server">Remarks</asp:Label></td>
+               <td colspan="12"><asp:TextBox ID="txtremarks" AutoComplete="off" Width="1217px" CssClass="btext1" runat="server"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+           </tr>
+           <tr>
+               <td><asp:Label ID="lbladdress1"  CssClass="label" runat="server">Address1</asp:Label></td>
+               <td colspan="3"><asp:TextBox ID="txtaddress1" AutoComplete="off" Width="491px" CssClass="btext1" runat="server" onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+               <td><asp:Label ID="lbladdress2"  CssClass="label" runat="server">Address2</asp:Label></td>
+               <td colspan="3"><asp:TextBox ID="txtadress2" AutoComplete="off" Width="536px" runat="server" CssClass="btext1" onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+           </tr>
+           <tr>
+               <td><asp:Label ID="lblcountry"  CssClass="label" runat="server">Country<span style="color:red"/>*</asp:Label></td>
+               <td><asp:DropDownList ID="drpcountry" CssClass="dropdown" AutoComplete="off" runat="server"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:DropDownList></td>
+               <td><asp:Label ID="lblcity"  CssClass="label" runat="server">City<span style="color:red"/>[F2]*</asp:Label></td>
+               <td><asp:TextBox ID="txtcity" runat="server" Width="174px"  Text="--Select City Name--" CssClass="btext1"  AutoComplete="off" onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+               <td><asp:Label ID="lbldistrict"  CssClass="label" runat="server">District</asp:Label></td>
+               <td><asp:TextBox ID="txtDistrict" AutoComplete="off" Width="166px" runat="server" CssClass="btext1"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+               <td><asp:Label ID="lbltaluka" CssClass="label" runat="server">Taluka<span style="color:red"/>[F2]</asp:Label></td>
+               <td><asp:TextBox ID="txttaluka" AutoComplete="off"  Width="158px" CssClass="btext1" runat="server" Text="--Select Taluka Name--" style="text-transform:capitalize;color:gray;"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+           </tr>
+           <tr>
+               <td><asp:Label ID="lblstate"  CssClass="label" runat="server">State</asp:Label></td>
+               <td><asp:TextBox ID="txtState" AutoComplete="off" Width="166px" CssClass="btext1" runat="server"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+               <td><asp:Label ID="lblzone"  CssClass="label" runat="server">Zone<span style="color:red"/>[F2]*</asp:Label></td>
+               <td><asp:TextBox ID="txtZone" AutoComplete="off" Width="174px" CssClass="btext1" runat="server" Text="--Select Zone Name--" style="text-transform:capitalize;color:gray;"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+               <td><asp:Label ID="lblregion"  CssClass="label" runat="server">Region<span style="color:red"/>[F2]*</asp:Label></td>
+               <td><asp:TextBox ID="txtRegion" runat="server" Width="166px" Text="--Select Region Name--" CssClass="btext1" style="text-transform:capitalize;color:gray;"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+               <td><asp:Label ID="lblpincode"  CssClass="label" AutoComplete="off" runat="server">PinCode</asp:Label></td>
+               <td><asp:TextBox ID="txtpincode" AutoComplete="off"  Width="158px" CssClass="btext1" runat="server"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+           </tr>
+           <tr>
+               <td><asp:Label ID="lbldroppoint"  CssClass="label" runat="server">DropPoint<span style="color:red"/>[F2]*</asp:Label></td>
+               <td><asp:TextBox ID="txtdroppoint" AutoComplete="off" runat="server" Width="166px" CssClass="btext1"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+               <td><asp:Label ID="lblphone1"  CssClass="label" runat="server">Phone1</asp:Label></td>
+               <td><asp:TextBox ID="txtphone1" AutoComplete="off" Width="174px" runat="server" CssClass="btext1" onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+               <td><asp:Label ID="lblphone2"  CssClass="label" runat="server">Phone2</asp:Label></td>
+               <td><asp:TextBox ID="txtphone2" AutoComplete="off" runat="server" Width="166px" CssClass="btext1" onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+               <td><asp:Label ID="lblfax1"  CssClass="label" runat="server">Fax1</asp:Label></td>
+               <td><asp:TextBox ID="txtfax1" AutoComplete="off"  Width="158px" runat="server" CssClass="btext1"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+           </tr>
+           <tr>
+               <td><asp:Label ID="lblemail1"  CssClass="label" runat="server">Email-Id1</asp:Label></td>
+               <td colspan="3"><asp:TextBox ID="txtemail1" AutoComplete="off" runat="server" Width="489px" CssClass="btext1" onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+               <td><asp:Label ID="lblemail2"  CssClass="label" runat="server">Email-Id2</asp:Label></td>
+               <td colspan="3"><asp:TextBox ID="txtemail2" AutoComplete="off" runat="server" Width="534px" CssClass="btext1" onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"></asp:TextBox></td>
+           </tr>
+           <tr>
+               <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                 <td></td>
+               <td></td>
+                <td style="text-align:start"><asp:Button ID="btnclear" runat="server" CssClass="button2" Text="Clear" onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);"/></td>
+                <td  style="text-align:end; margin:auto; "><asp:Button ID="btnsave" CssClass="button2"  runat="server" Text="submit"  onblur="javascript:return onblurcol(this.id);" onfocus="javascript:return onfocuscol(this.id);" BackColor=""/></td>
+                
+
+           </tr>
+       </table>
+
+
+   </div>
+   <input id="hdncompcode" type="hidden" name="hiddencomcode" runat="server" />
+   <input id="hiddenuserid" type="hidden" name="Hidden1" runat="server" />
+   <input id="hiddendateformat" type="hidden" name="Hidden2" runat="server" />
+   <input id="hdnip" type="hidden" name="Hidden2" runat="server" />
+   <input id="hiddenmastercode" type="hidden" name="Hidden2" runat="server" />
+   <input id="hdncenter" type="hidden" name="Hidden2" runat="server" />
+   <input id="hiddenmistype" type="hidden" name="Hidden2" runat="server" />
+   <input id="hdnState" type="hidden" name="hiddencomcode" runat="server" />
+   <input id="hdnDistrict" type="hidden" name="Hidden1" runat="server" />
+   <input id="hdnZone" type="hidden" name="hiddencomcode" runat="server" />
+   <input id="hdnRegion" type="hidden" name="Hidden1" runat="server" />
+   <input id="hdnclient" type="hidden" name="Hidden1" runat="server" />
+   <input id="tmpagencycode" type="hidden" runat="server" />
+   <input id="hdncountry" type="hidden" runat="server" />
+   <input id="hiddenindustry" type="hidden" size="1" name="Hidden2" runat="server" />
+   <input id="hdnCity" type="hidden" size="1" name="Hidden2" runat="server" />
+   <input id="hdncomrate" type="hidden" runat="server" />
+   <input id="hdndel" type="hidden" name="Hidden2" runat="server" />
+   <input id="hiddentext" type="hidden" name="Hidden2" runat="server" />
+   <input id="hdnLabelclick" type="hidden" name="Hidden2" runat="server" />
+   <input id="hdnbranch" type="hidden" name="Hidden2" runat="server" />
+   <input id="hiddenrownumber" type="hidden" name="Hidden2" runat="server" />
+   <input id="hiddenmode" type="hidden" name="Hidden2" runat="server" />
+   <input id="hdnbookag" type="hidden" name="Hidden2" runat="server" />
+   <input id="hdngencode" type="hidden" name="roomhdn" runat="server" />
+
+  <input id="hiddeenagencycode" type="hidden" runat="server" />
+
+  <%-- <input id="hdncent" type="hidden" runat="server" />--%>
+ 
+    </form>
+</body>
+</html>
